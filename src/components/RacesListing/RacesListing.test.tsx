@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { BrowserRouter } from "react-router";
 import { describe, expect, test, vi } from "vitest";
 import RacesListing from "./RacesListing";
 import { View, type Race } from "../../types/types";
@@ -75,7 +76,11 @@ const defaultProps = {
 
 const renderRacesListing = (props = {}) => {
   const mergedProps = { ...defaultProps, ...props };
-  return render(<RacesListing {...mergedProps} />);
+  return render(
+    <BrowserRouter>
+      <RacesListing {...mergedProps} />
+    </BrowserRouter>
+  );
 };
 
 describe("RacesListing", () => {

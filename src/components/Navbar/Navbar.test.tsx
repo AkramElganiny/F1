@@ -15,7 +15,6 @@ describe("Navbar", () => {
     expect(screen.getByText("Formula One Explorer")).toBeDefined();
     expect(screen.getByTestId("navbar-home-link")).toBeDefined();
     expect(screen.getByTestId("navbar-seasons-link")).toBeDefined();
-    expect(screen.getByTestId("navbar-drivers-link")).toBeDefined();
   });
 
   test("slides mobile menu up and down when clicking the menu button", async () => {

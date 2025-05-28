@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { BrowserRouter } from "react-router";
 import { describe, expect, test, vi } from "vitest";
 import RaceCard from "./RaceCard";
 import type { Race } from "../../../types/types";
@@ -31,7 +32,11 @@ const defaultProps = {
 
 const renderRaceCard = (props = {}) => {
   const mergedProps = { ...defaultProps, ...props };
-  return render(<RaceCard {...mergedProps} />);
+  return render(
+    <BrowserRouter>
+      <RaceCard {...mergedProps} />
+    </BrowserRouter>
+  );
 };
 
 // Mock window.open
