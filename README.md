@@ -1,54 +1,96 @@
-# React + TypeScript + Vite
+# Formula 1 Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React application for exploring Formula 1 seasons, races, and race results using the Ergast API.
 
-Currently, two official plugins are available:
+## Setup and Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
 
-## Expanding the ESLint configuration
+- npm package manager
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation Steps
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. **Clone the repository**
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+   ```bash
+   git clone <repository-url>
+   cd formula1-explorer
+   ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2. **Install dependencies**
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+   The application will be available at `http://localhost:5173`
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run dev:hmr` - Start development server with HMR on all network interfaces
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint
+- `npm run test` - Run tests
+- `npm run test:watch` - Run tests in watch mode
+
+## Technical Approach and Architecture
+
+### Core Technologies
+
+- **React 19** with TypeScript for type-safe component development
+- **Vite** as the build tool for fast development and optimized production builds
+- **React Router 7** for client-side routing and navigation
+- **TailwindCSS 4** for utility-first styling with custom configuration
+- **Vitest** with Testing Library for comprehensive testing
+
+### Architecture Overview
+
+#### Component Structure
+
+The application follows a modular component architecture:
+
+- **Pages**: Route-level components (`Home`, `SeasonsPage`, `RacesPage`, `RaceDetailsPage`)
+- **Feature Components**: Domain-specific components (`SeasonsListing`, `RacesListing`, `RaceDetails`)
+- **Shared Components**: Reusable UI components (`Navbar`, `Pagination`, `LoadingSkeleton`)
+
+#### Data Management
+
+- **API Service Layer**: Centralized API calls using the Ergast F1 API
+- **Type Safety**: Comprehensive TypeScript interfaces for all data structures
+- **Error Handling**: Robust error handling with user-friendly error states
+
+#### Routing Strategy
+
+- Hierarchical routing structure: `/seasons` → `/seasons/:year/races` → `/seasons/:year/races/:round`
+- URL-driven navigation with proper parameter handling
+- Centralized route configuration for maintainability
+
+#### Styling Approach
+
+- **TailwindCSS 4**: Latest version with enhanced performance
+- **Responsive Design**: Mobile-first approach with consistent breakpoints
+- **Component-Scoped Styling**: Utility classes for maintainable and scalable styles
+
+#### Performance Considerations
+
+- **Code Splitting**: Route-based code splitting for optimal loading
+- **Optimized Builds**: Vite's fast bundling and tree-shaking
+- **Efficient Re-renders**: React best practices for component optimization
+
+#### Testing Strategy
+
+- **Unit Testing**: Component testing with React Testing Library
+- **Integration Testing**: User interaction flows and API integration
+- **Type Safety**: TypeScript compilation as part of the testing pipeline
+
+### External Dependencies
+
+- **Ergast API**: Free Formula 1 data API (no authentication required)
+- **Date-fns**: Lightweight date manipulation library
+- **Modern React Ecosystem**: Latest stable versions for optimal performance and developer experience
