@@ -32,7 +32,7 @@ describe("SeasonCard", () => {
 
     const mainLink = screen.getByTestId("season-2024-list-item");
     expect(mainLink).toBeDefined();
-    expect(mainLink.getAttribute("href")).toBe("/seasons/2024");
+    expect(mainLink.getAttribute("href")).toBe("/seasons/2024/races");
   });
 
   test("opens Wikipedia link in new tab when clicking the Wikipedia button", async () => {

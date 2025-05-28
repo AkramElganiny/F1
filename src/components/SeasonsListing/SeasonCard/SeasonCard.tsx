@@ -1,10 +1,11 @@
 import { Link } from "react-router";
 import type { Season } from "../../../types/types";
+import { ROUTES } from "../../../utils/routes";
 
 export default function SeasonCard({ season }: { season: Season }) {
   return (
     <Link
-      to={`/seasons/${season.season}`}
+      to={ROUTES.SEASONS.RACES(season.season.toString())}
       className="group block transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-xl"
       aria-label={`View races for ${season.season} season`}
       data-testid={`season-${season.season}-card`}
