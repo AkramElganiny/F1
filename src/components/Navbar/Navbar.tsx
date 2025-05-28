@@ -39,13 +39,6 @@ const Navbar = () => {
             >
               Seasons
             </Link>
-            <Link
-              to={ROUTES.DRIVERS}
-              className="text-gray-300 hover:text-white hover:bg-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200"
-              data-testid="navbar-drivers-link"
-            >
-              Drivers
-            </Link>
           </div>
 
           <div className="md:hidden">
@@ -102,14 +95,6 @@ const Navbar = () => {
               data-testid="navbar-seasons-link-mobile"
             >
               Seasons
-            </Link>
-            <Link
-              to={ROUTES.DRIVERS}
-              className="text-gray-300 hover:text-white hover:bg-blue-600 block px-4 py-3 rounded-md text-base font-medium transition-all duration-200"
-              onClick={() => setIsMenuOpen(false)}
-              data-testid="navbar-drivers-link-mobile"
-            >
-              Drivers
             </Link>
           </div>
         </div>

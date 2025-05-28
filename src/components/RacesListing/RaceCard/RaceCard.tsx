@@ -1,5 +1,7 @@
 import type { Race } from "../../../types/types";
 import { format } from "date-fns";
+import { Link } from "react-router";
+import { ROUTES } from "../../../utils/routes";
 
 interface RaceCardProps {
   race: Race;
@@ -28,7 +30,8 @@ export default function RaceCard({
   };
 
   return (
-    <div
+    <Link
+      to={ROUTES.SEASONS.RACE_DETAILS(race.season, race.round)}
       className={`group block transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-xl ${
         isPinned ? "ring-2 ring-orange-500" : ""
       }`}
@@ -147,6 +150,6 @@ export default function RaceCard({
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

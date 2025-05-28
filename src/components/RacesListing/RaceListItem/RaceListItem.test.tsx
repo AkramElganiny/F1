@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, test, vi } from "vitest";
 import RaceListItem from "./RaceListItem";
 import type { Race } from "../../../types/types";
+import { BrowserRouter } from "react-router";
 
 const mockRace: Race = {
   season: "2024",
@@ -31,7 +32,11 @@ const defaultProps = {
 
 const renderRaceListItem = (props = {}) => {
   const mergedProps = { ...defaultProps, ...props };
-  return render(<RaceListItem {...mergedProps} />);
+  return render(
+    <BrowserRouter>
+      <RaceListItem {...mergedProps} />
+    </BrowserRouter>
+  );
 };
 
 // Mock window.open

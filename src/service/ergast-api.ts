@@ -1,4 +1,4 @@
-import type { Season, Race } from "../types/types";
+import type { Season, Race, RaceResultsResponse } from "../types/types";
 
 const BASE_URL = "https://ergast.com/api/f1";
 
@@ -38,5 +38,31 @@ export const getRaces = async (
     };
   } catch (error) {
     throw new Error(`Failed to fetch races for season ${season}: ${error}`);
+  }
+};
+
+export const getRaceResults = async (
+  season: string,
+  round: string
+): Promise<RaceResultsResponse> => {
+  try {
+    const response = await fetch(`${BASE_URL}/${season}/${round}/results.json`);
+    const data = await response.json();
+    console.log(data);
+
+    if (
+      !data.MRData.RaceTable.Races ||
+      data.MRData.RaceTable.Races.length === 0
+    ) {
+      throw new Error(
+        `No race results found for season ${season}, round ${round}`
+      );
+    }
+
+    return data.MRData.RaceTable.Races[0];
+  } catch (error) {
+    throw new Error(
+      `Failed to fetch race results for season ${season}, round ${round}: ${error}`
+    );
   }
 };

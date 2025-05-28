@@ -1,5 +1,7 @@
 import type { Race } from "../../../types/types";
 import { format } from "date-fns";
+import { Link } from "react-router";
+import { ROUTES } from "../../../utils/routes";
 
 interface RaceListItemProps {
   race: Race;
@@ -28,8 +30,9 @@ export default function RaceListItem({
   };
 
   return (
-    <div
-      className={`group bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 p-4 ${
+    <Link
+      to={ROUTES.SEASONS.RACE_DETAILS(race.season, race.round)}
+      className={`group block bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 p-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
         isPinned ? "ring-2 ring-orange-500" : ""
       }`}
       data-testid={`race-${race.season}-${race.round}-list-item`}
@@ -179,6 +182,6 @@ export default function RaceListItem({
           </button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
