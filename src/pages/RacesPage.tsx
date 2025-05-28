@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router";
 import RacesListing from "../components/RacesListing/RacesListing";
-import { View, type Race } from "../types/types";
+import { pageViewMode, type Race, type PageViewMode } from "../types/types";
 import { getRaces } from "../service/ergast-api";
 import ViewMode from "../components/SeasonsListing/ViewMode/ViewMode";
 import Pagination from "../components/Pagination/Pagination";
@@ -13,7 +13,7 @@ const ITEMS_PER_PAGE = 8;
 export default function RacesPage() {
   const { year } = useParams<{ year: string }>();
   const [currentPage, setCurrentPage] = useState(1);
-  const [view, setView] = useState<View>(View.CARD);
+  const [view, setView] = useState<PageViewMode>(pageViewMode.CARD);
   const [races, setRaces] = useState<Race[]>([]);
   const [allRaces, setAllRaces] = useState<Race[]>([]);
   const [loading, setLoading] = useState(true);
@@ -63,7 +63,7 @@ export default function RacesPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleViewChange = (newView: View) => {
+  const handleViewChange = (newView: PageViewMode) => {
     setView(newView);
   };
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SeasonsListing from "../components/SeasonsListing/SeasonsListing";
-import { View, type Season } from "../types/types";
+import { pageViewMode, type Season, type PageViewMode } from "../types/types";
 import { getSeasons } from "../service/ergast-api";
 import ViewMode from "../components/SeasonsListing/ViewMode/ViewMode";
 import Pagination from "../components/Pagination/Pagination";
@@ -9,7 +9,7 @@ const ITEMS_PER_PAGE = 8;
 
 export default function SeasonsPage() {
   const [currentPage, setCurrentPage] = useState(1);
-  const [view, setView] = useState<View>(View.CARD);
+  const [view, setView] = useState<PageViewMode>(pageViewMode.CARD);
   const [seasons, setSeasons] = useState<Season[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -38,7 +38,7 @@ export default function SeasonsPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleViewChange = (newView: View) => {
+  const handleViewChange = (newView: PageViewMode) => {
     setView(newView);
   };
 

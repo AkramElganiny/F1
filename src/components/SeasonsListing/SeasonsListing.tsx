@@ -1,5 +1,5 @@
 import type { Season } from "../../types/types";
-import { View } from "../../types/types";
+import { pageViewMode, type PageViewMode } from "../../types/types";
 import SeasonCard from "./SeasonCard/SeasonCard";
 import SeasonListItem from "./SeasonListItem/SeasonListItem";
 import LoadingSkeleton from "../LoadingSkeleton/LoadingSkeleton";
@@ -9,7 +9,7 @@ interface SeasonsListingProps {
   itemsPerPage: number;
   currentPage: number;
   loading: boolean;
-  view: View;
+  view: PageViewMode;
   error: string | null;
 }
 
@@ -58,7 +58,7 @@ export default function SeasonsListing({
 
   return (
     <div className="min-h-[400px]" data-testid="seasons-listing-container">
-      {view === View.CARD ? (
+      {view === pageViewMode.CARD ? (
         <div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           data-testid="seasons-card-grid"

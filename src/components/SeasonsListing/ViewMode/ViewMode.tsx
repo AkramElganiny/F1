@@ -1,8 +1,8 @@
-import { View } from "../../../types/types";
+import { pageViewMode, type PageViewMode } from "../../../types/types";
 
 interface ViewModeProps {
-  view: View;
-  onViewChange: (view: View) => void;
+  view: PageViewMode;
+  onViewChange: (view: PageViewMode) => void;
 }
 
 export default function ViewMode({ view, onViewChange }: ViewModeProps) {
@@ -12,14 +12,14 @@ export default function ViewMode({ view, onViewChange }: ViewModeProps) {
       data-testid="view-mode-toggle"
     >
       <button
-        onClick={() => onViewChange(View.CARD)}
+        onClick={() => onViewChange(pageViewMode.CARD)}
         className={`inline-flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-          view === View.CARD
+          view === pageViewMode.CARD
             ? "bg-white text-gray-900 shadow-sm"
             : "text-gray-600 hover:text-gray-900 hover:bg-gray-50 hover:cursor-pointer"
         }`}
         aria-label="Switch to card view"
-        aria-pressed={view === View.CARD}
+        aria-pressed={view === pageViewMode.CARD}
         data-testid="view-mode-card-button"
       >
         <svg
@@ -39,14 +39,14 @@ export default function ViewMode({ view, onViewChange }: ViewModeProps) {
       </button>
 
       <button
-        onClick={() => onViewChange(View.LIST)}
+        onClick={() => onViewChange(pageViewMode.LIST)}
         className={`inline-flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-          view === View.LIST
+          view === pageViewMode.LIST
             ? "bg-white text-gray-900 shadow-sm"
             : "text-gray-600 hover:text-gray-900 hover:bg-gray-50 hover:cursor-pointer"
         }`}
         aria-label="Switch to list view"
-        aria-pressed={view === View.LIST}
+        aria-pressed={view === pageViewMode.LIST}
         data-testid="view-mode-list-button"
       >
         <svg

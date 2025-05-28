@@ -87,7 +87,9 @@ export interface RaceResultsResponse {
   Results: RaceResult[];
 }
 
-export enum View {
-  CARD = "card",
-  LIST = "list",
-}
+export const pageViewMode = {
+  CARD: "card",
+  LIST: "list",
+} as const;
+
+export type PageViewMode = (typeof pageViewMode)[keyof typeof pageViewMode];

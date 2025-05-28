@@ -1,5 +1,5 @@
 import type { Race } from "../../types/types";
-import { View } from "../../types/types";
+import { pageViewMode, type PageViewMode } from "../../types/types";
 import RaceCard from "./RaceCard/RaceCard";
 import RaceListItem from "./RaceListItem/RaceListItem";
 import LoadingSkeleton from "../LoadingSkeleton/LoadingSkeleton";
@@ -10,7 +10,7 @@ interface RacesListingProps {
   itemsPerPage: number;
   currentPage: number;
   loading: boolean;
-  view: View;
+  view: PageViewMode;
   error: string | null;
   pinnedRaces: string[];
   onTogglePin: (raceId: string) => void;
@@ -78,7 +78,7 @@ export default function RacesListing({
   const renderRaceComponent = (race: Race, isPinned: boolean) => {
     const raceId = `${race.season}-${race.round}`;
 
-    if (view === View.CARD) {
+    if (view === pageViewMode.CARD) {
       return (
         <RaceCard
           key={raceId}
@@ -117,7 +117,7 @@ export default function RacesListing({
             </h2>
           </div>
 
-          {view === View.CARD ? (
+          {view === pageViewMode.CARD ? (
             <div
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
               data-testid="pinned-races-card-grid"
@@ -167,7 +167,7 @@ export default function RacesListing({
             </div>
           )}
 
-          {view === View.CARD ? (
+          {view === pageViewMode.CARD ? (
             <div
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
               data-testid="races-card-grid"

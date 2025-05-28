@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router";
 import { describe, expect, test, vi } from "vitest";
 import RacesListing from "./RacesListing";
-import { View, type Race } from "../../types/types";
+import { pageViewMode, type Race } from "../../types/types";
 
 const mockRaces: Race[] = [
   {
@@ -68,7 +68,7 @@ const defaultProps = {
   itemsPerPage: 8,
   currentPage: 1,
   loading: false,
-  view: View.CARD,
+  view: pageViewMode.CARD,
   error: null,
   pinnedRaces: [],
   onTogglePin: vi.fn(),
@@ -98,7 +98,7 @@ describe("RacesListing", () => {
   });
 
   test("renders races in list view when view prop is LIST", () => {
-    renderRacesListing({ view: View.LIST });
+    renderRacesListing({ view: pageViewMode.LIST });
 
     expect(screen.getByTestId("races-listing-container")).toBeDefined();
     expect(screen.getByTestId("races-list-container")).toBeDefined();
@@ -148,7 +148,7 @@ describe("RacesListing", () => {
 
   test("displays pinned races in list view", () => {
     const pinnedRaces = ["2024-1"];
-    renderRacesListing({ pinnedRaces, view: View.LIST });
+    renderRacesListing({ pinnedRaces, view: pageViewMode.LIST });
 
     expect(screen.getByTestId("pinned-races-section")).toBeDefined();
     expect(screen.getByTestId("pinned-races-list-container")).toBeDefined();

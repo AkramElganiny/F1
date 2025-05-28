@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router";
 import { describe, expect, test } from "vitest";
 import SeasonsListing from "./SeasonsListing";
-import { View, type Season } from "../../types/types";
+import { pageViewMode, type Season } from "../../types/types";
 
 const mockSeasons: Season[] = [
   {
@@ -24,7 +24,7 @@ const defaultProps = {
   itemsPerPage: 8,
   currentPage: 1,
   loading: false,
-  view: View.CARD,
+  view: pageViewMode.CARD,
   error: null,
 };
 
@@ -52,7 +52,7 @@ describe("SeasonsListing", () => {
   });
 
   test("renders seasons in list view when view prop is LIST", () => {
-    renderSeasonsListing({ view: View.LIST });
+    renderSeasonsListing({ view: pageViewMode.LIST });
 
     expect(screen.getByTestId("seasons-listing-container")).toBeDefined();
     expect(screen.getByTestId("seasons-list-container")).toBeDefined();
