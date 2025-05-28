@@ -80,25 +80,30 @@ const Navbar = () => {
         </div>
 
         <div
-          className={`${isMenuOpen ? "block" : "hidden"} md:hidden`}
+          className={`${
+            isMenuOpen ? "translate-y-0" : "-translate-y-full hidden"
+          } fixed top-16 left-0 right-0 bg-slate-900 transform transition-transform duration-300 ease-in-out z-50 md:hidden border-b border-blue-500`}
           id="mobile-menu"
         >
-          <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="px-4 py-4 space-y-2 max-w-7xl mx-auto">
             <Link
               to={ROUTES.HOME}
-              className="text-gray-300 hover:text-white hover:bg-blue-600 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200"
+              className="text-gray-300 hover:text-white hover:bg-blue-600 block px-4 py-3 rounded-md text-base font-medium transition-all duration-200"
+              onClick={handleMenuToggle}
             >
               Home
             </Link>
             <Link
               to={ROUTES.SEASONS.LIST}
-              className="text-gray-300 hover:text-white hover:bg-blue-600 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200"
+              className="text-gray-300 hover:text-white hover:bg-blue-600 block px-4 py-3 rounded-md text-base font-medium transition-all duration-200"
+              onClick={handleMenuToggle}
             >
               Seasons
             </Link>
             <Link
               to={ROUTES.DRIVERS}
-              className="text-gray-300 hover:text-white hover:bg-blue-600 block px-3 py-2 rounded-md text-base font-medium transition-all duration-200"
+              className="text-gray-300 hover:text-white hover:bg-blue-600 block px-4 py-3 rounded-md text-base font-medium transition-all duration-200"
+              onClick={handleMenuToggle}
             >
               Drivers
             </Link>
