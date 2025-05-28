@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import { ROUTES } from "./utils/routes";
 import Home from "./pages/Home";
+import SeasonsPage from "./pages/SeasonsPage";
 
 function App() {
   return (
@@ -11,10 +12,7 @@ function App() {
 
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
-          <Route
-            path={ROUTES.SEASONS.LIST}
-            element={<div>Seasons Listing</div>}
-          />
+          <Route path={ROUTES.SEASONS.LIST} element={<SeasonsPage />} />
           <Route
             path={ROUTES.SEASONS.DETAIL()}
             element={<div>Season Page</div>}

@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { useState } from "react";
-import { ROUTES } from "../utils/routes";
+import { ROUTES } from "../../utils/routes";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
